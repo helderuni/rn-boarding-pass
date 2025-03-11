@@ -1,23 +1,144 @@
-import { ChevronLeftIcon, Share2Icon } from 'lucide-react-native';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
+import * as RNWallet from '@premieroctet/react-native-wallet';
+import { useState } from 'react';
+// import { ChevronLeftIcon, Share2Icon } from 'lucide-react-native';
+// import * as ExpoWallet from '@giulio987/expo-wallet';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  Alert,
+  View,
+  Platform,
+  ActivityIndicator,
+} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Line, Circle, Polygon } from 'react-native-svg';
+import WalletManager from 'react-native-wallet-manager';
+
+import { pass, token } from '~/utils';
 
 const URL = 'https://google.com';
 
+const blobToDataUrl = async (blob) =>
+  new Promise((r) => {
+    const a = new FileReader();
+    a.onload = r;
+    a.readAsDataURL(blob);
+  }).then((e) => e.target.result);
+
 export const BoardingPass = () => {
   const insets = useSafeAreaInsets();
+
+  // const tokenURL = pass;
+
+  // const onAdd = async () => {
+  //   try {
+  //     const isAdded = await RNWallet.addPass(
+  //       'https://github.com/dev-family/react-native-wallet-manager/blob/main/example/resources/SamplePasses/BoardingPass.pkpass?raw=true'
+  //     );
+
+  //     Alert.alert('Pass added', isAdded ? 'Yes' : 'No');
+  //   } catch (error) {
+  //     Alert.alert('Error', (error as Error).message);
+  //   }
+  // };
+
+  const onCheckPassExists = async () => {
+    try {
+      const passExists = await RNWallet.hasPass('<PassUrlOrToken>');
+
+      Alert.alert('Pass exists', passExists ? 'Yes' : 'No');
+    } catch (error) {
+      Alert.alert('Error', (error as Error).message);
+    }
+  };
+
+  const onRemovePass = async () => {
+    try {
+      await RNWallet.removePass('<PassUrlOrToken>');
+
+      Alert.alert('Pass removed');
+    } catch (error) {
+      Alert.alert('Error', (error as Error).message);
+    }
+  };
+
+  const onCanAddPasses = async () => {
+    try {
+      const canAddPasses = await RNWallet.canAddPasses();
+
+      Alert.alert('Can add passes', canAddPasses ? 'Yes' : 'No');
+    } catch (error) {
+      Alert.alert('Error', (error as Error).message);
+    }
+  };
+
+  // const addToWallet = async () => {
+  //   try {
+  //     const res = await ExpoWallet.addPass(Platform.OS === 'ios' ? pass : token);
+  //     console.log(res);
+  //   } catch (error) {}
+  // };
+
+  // const isAvailable = async () => {
+  //   const res = await ExpoWallet.isAvailable();
+  //   if (res) {
+  //     alert('Available');
+  //   } else {
+  //     alert('Not available');
+  //   }
+  // };
+
+  // New data
+  const name = 'Helder Correia';
+  const [isLoadingPass, setIsLoadingPass] = useState(false);
+
+  const handleSubmit = async () => {
+    // Skip if the name is not set
+    if (!name) return;
+    try {
+      setIsLoadingPass(true);
+      const pass = await fetch('http://localhost:3000', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+        }),
+      });
+      const passBlob = await pass.blob();
+      const passDataUrl = await blobToDataUrl(passBlob);
+      // await WalletManager.addPassFromUrl(await blobToDataUrl(passBlob));
+      // console.log(passDataUrl.slice(0, 100));
+      const isAdded = await RNWallet.addPass(
+        // 'https://github.com/dev-family/react-native-wallet-manager/blob/main/example/resources/SamplePasses/BoardingPass.pkpass?raw=true'
+        passDataUrl
+      );
+      // await WalletManager.addPassFromUrl(
+      //   'https://github.com/dev-family/react-native-wallet-manager/blob/main/example/resources/SamplePasses/BoardingPass.pkpass?raw=true'
+      // );
+      Alert.alert('Pass added', isAdded ? 'Yes' : 'No');
+      // Alert.alert('Pass added');
+      setIsLoadingPass(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <View className="flex-1 bg-[#c82f26]" style={{ paddingTop: insets.top }}>
       <View className=" gap-y-6 px-4 ">
         <View className="flex-row items-center justify-between">
           <TouchableOpacity className="rounded-xl bg-black/10 p-2">
-            <ChevronLeftIcon size={24} color="white" />
+            {/* <ChevronLeftIcon size={24} color="white" /> */}
+            <Entypo name="chevron-small-left" size={24} color="white" />
+            {/* <Text>Back</Text> */}
           </TouchableOpacity>
           <Text className="text-white">Boarding pass</Text>
           <TouchableOpacity className="rounded-xl bg-black/10 p-2">
-            <Share2Icon size={24} color="white" />
+            <AntDesign name="sharealt" size={24} color="white" />
           </TouchableOpacity>
         </View>
 
@@ -29,7 +150,7 @@ export const BoardingPass = () => {
         <View className="gap-y-3 rounded-xl bg-white">
           <View className="flex-row items-center justify-between  p-4">
             <View className="flex-row items-center gap-x-2">
-              <Text>Img</Text>
+              <Image source={require('../assets/images/logo.png')} className="h-6 w-7" />
               <View className="">
                 <Text className="text-lg font-semibold">China Eastern Airlines</Text>
                 <Text className="text-base text-slate-400">N1337</Text>
@@ -63,8 +184,8 @@ export const BoardingPass = () => {
             </View>
             <View className=" flex-grow  gap-1  rounded-md bg-gray-50 p-2">
               <Text>Arrival</Text>
-              <Text className="text-xl font-semibold">2:50 PM</Text>
-              <Text className="text-slate-400">15 June, 2023</Text>
+              <Text className="text-xl font-semibold">2:25 PM</Text>
+              <Text className="text-slate-400">25 June, 2025</Text>
             </View>
           </View>
           <View className="flex-row  justify-between gap-x-4 px-4">
@@ -99,7 +220,11 @@ export const BoardingPass = () => {
           </View>
 
           <View className="mb-4 flex  py-2">
-            <TouchableOpacity className="flex-row items-center justify-center gap-x-2">
+            <TouchableOpacity
+              className="flex-row items-center justify-center gap-x-2"
+              onPress={handleSubmit}
+              disabled={isLoadingPass}>
+              <ActivityIndicator animating={isLoadingPass} color="#c82f26" className="-ml-6" />
               <Text className="text-center  text-slate-600">Add to Apple Wallet</Text>
               <Image source={require('../assets/images/apple_wallet.png')} className="h-5 w-7" />
             </TouchableOpacity>
