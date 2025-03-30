@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
-    "@giulio987/expo-wallet": "^0.1.4",
     "@premieroctet/react-native-wallet": "^1.0.1",
     "@react-navigation/native": "^7.0.3",
     "expo": "^52.0.0",
@@ -35,7 +34,6 @@
     "react-native-screens": "~4.4.0",
     "react-native-svg": "15.8.0",
     "react-native-toast-message": "^2.2.1",
-    "react-native-wallet-manager": "^1.1.1",
     "react-native-web": "~0.19.10",
     "expo-sharing": "~13.0.1"
   },

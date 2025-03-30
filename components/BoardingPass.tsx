@@ -27,17 +27,16 @@ export const BoardingPass = () => {
   const handleSubmit = async () => {
     try {
       setIsLoadingPass(true);
-      // const pass = await fetch('http://localhost:3000', {
-      const pass = await fetch(
-        'https://94eb-2a0a-ef40-127f-f201-3ce6-195d-1915-98cb.ngrok-free.app',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name,
-          }),
-        }
-      );
+      const pass = await fetch('http://localhost:3000', {
+        // const pass = await fetch(
+        //   'https://94eb-2a0a-ef40-127f-f201-3ce6-195d-1915-98cb.ngrok-free.app',
+        //   {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+        }),
+      });
       const passBlob = await pass.blob();
       const passDataUrl = await blobToDataUrl(passBlob);
       const isAdded = await RNWallet.addPass(
@@ -100,7 +99,7 @@ export const BoardingPass = () => {
 
         <View className="flex-row items-center justify-between">
           <Text className="text-3xl font-bold text-white">Nº N1337-1476-88</Text>
-          <Text className="text-base text-white ">5 May, 2025</Text>
+          <Text className="text-base text-white ">25 June, 2025</Text>
         </View>
 
         <View className="gap-y-3 rounded-xl bg-white">
@@ -140,8 +139,8 @@ export const BoardingPass = () => {
             </View>
             <View className=" flex-grow  gap-1  rounded-md bg-gray-50 p-2">
               <Text>Arrival</Text>
-              <Text className="text-xl font-semibold">01:05 PM</Text>
-              <Text className="text-slate-400">25 June, 2025</Text>
+              <Text className="text-xl font-semibold">01:05 AM</Text>
+              <Text className="text-slate-400">26 June, 2025</Text>
             </View>
           </View>
           <View className="flex-row  justify-between gap-x-4 px-4">
