@@ -10,7 +10,13 @@ import Svg, { Line, Circle, Polygon } from 'react-native-svg';
 import Toast from 'react-native-toast-message';
 
 const URL = 'https://skyport.com';
-
+const COLORS = {
+  primary: '#c82f26',
+  white: '#fff',
+  black: '#000',
+  gray: '#E5E7EB',
+};
+const polygonPoints = '0,0 200,0 170,30 30,30';
 const blobToDataUrl = async (blob: Blob): Promise<string> =>
   new Promise((resolve) => {
     const reader = new FileReader();
@@ -53,7 +59,7 @@ export const BoardingPass = () => {
       } else {
         Toast.show({
           type: 'error',
-          text1: 'Hello',
+          text1: 'Error',
           text2: 'Pass not added',
         });
       }
@@ -66,18 +72,6 @@ export const BoardingPass = () => {
 
   const handleShare = async () => {
     try {
-      // const pass = await fetch(
-      //   'https://ee95-2a0a-ef40-127f-f201-3ce6-195d-1915-98cb.ngrok-free.app',
-      //   {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify({
-      //       name,
-      //     }),
-      //   }
-      // );
-      // const passBlob = await pass.blob();
-      // const passDataUrl = await blobToDataUrl(passBlob);
       await Sharing.shareAsync(URL);
     } catch (e) {
       console.log(e);
@@ -85,7 +79,7 @@ export const BoardingPass = () => {
   };
 
   return (
-    <View className="flex-1 bg-[#c82f26]" style={{ paddingTop: insets.top }}>
+    <View className="bg-primary flex-1" style={{ paddingTop: insets.top }}>
       <View className=" gap-y-6 px-4 ">
         <View className="flex-row items-center justify-between">
           <TouchableOpacity className="rounded-xl bg-black/10 p-2">
@@ -99,7 +93,7 @@ export const BoardingPass = () => {
 
         <View className="flex-row items-center justify-between">
           <Text className="text-3xl font-bold text-white">Nº N1337-1476-88</Text>
-          <Text className="text-base text-white ">25 June, 2025</Text>
+          <Text className="text-sm text-white">25 June, 2025</Text>
         </View>
 
         <View className="gap-y-3 rounded-xl bg-white">
@@ -108,12 +102,12 @@ export const BoardingPass = () => {
               <Image source={require('../assets/images/logo.png')} className="h-6 w-7" />
               <View className="">
                 <Text className="text-lg font-semibold">China Eastern Airlines</Text>
-                <Text className="text-base text-slate-400">N1337</Text>
+                <Text className="text-sm text-slate-500">MU 1337</Text>
               </View>
             </View>
             <View className="">
               <Text className="text-lg font-semibold">1 seats</Text>
-              <Text className="text-base text-slate-400">11h 40m</Text>
+              <Text className="text-sm text-gray-500">11h 40m</Text>
             </View>
           </View>
 
@@ -124,7 +118,7 @@ export const BoardingPass = () => {
                 y1="50%"
                 x2="100%"
                 y2="50%"
-                stroke="#E5E7EB"
+                stroke={COLORS.gray}
                 strokeWidth="1"
                 strokeDasharray="5,5"
               />
@@ -135,26 +129,26 @@ export const BoardingPass = () => {
             <View className="flex-grow  gap-1 rounded-md bg-gray-50 p-2">
               <Text>Departure</Text>
               <Text className="text-xl font-semibold">02:25 PM</Text>
-              <Text className="text-slate-400">25 June, 2023</Text>
+              <Text className="text-sm  text-gray-500">25 June,2025</Text>
             </View>
             <View className=" flex-grow  gap-1  rounded-md bg-gray-50 p-2">
               <Text>Arrival</Text>
               <Text className="text-xl font-semibold">01:05 AM</Text>
-              <Text className="text-slate-400">26 June, 2025</Text>
+              <Text className="text-sm  text-gray-500">26 June, 2025</Text>
             </View>
           </View>
           <View className="flex-row  justify-between gap-x-4 px-4">
             <View className=" flex-grow  gap-1  rounded-md bg-gray-50 p-2">
               <Text className="text-xl font-semibold">17A</Text>
-              <Text className="text-slate-400">Seats</Text>
+              <Text className="text-sm  text-gray-500">Seats</Text>
             </View>
             <View className=" flex-grow  gap-1  rounded-md bg-gray-50 p-2">
               <Text className="text-xl font-semibold">T5</Text>
-              <Text className="text-slate-400">Terminal</Text>
+              <Text className="text-sm  text-gray-500">Terminal</Text>
             </View>
             <View className=" flex-grow  gap-1  rounded-md bg-gray-50 p-2">
               <Text className="text-xl font-semibold">23</Text>
-              <Text className="text-slate-400">Gate</Text>
+              <Text className="text-sm  text-gray-500">Gate</Text>
             </View>
           </View>
 
@@ -165,12 +159,12 @@ export const BoardingPass = () => {
                 y1="50%"
                 x2="100%"
                 y2="50%"
-                stroke="#E5E7EB"
+                stroke={COLORS.gray}
                 strokeWidth="1"
                 strokeDasharray="5,5"
               />
-              <Circle cx="0" cy="50%" r="8" fill="#c82f26" />
-              <Circle cx="100%" cy="50%" r="8" fill="#c82f26" />
+              <Circle cx="0" cy="50%" r="8" fill={COLORS.primary} />
+              <Circle cx="100%" cy="50%" r="8" fill={COLORS.primary} />
             </Svg>
           </View>
 
@@ -179,7 +173,11 @@ export const BoardingPass = () => {
               className="flex-row items-center justify-center gap-x-2"
               onPress={handleSubmit}
               disabled={isLoadingPass}>
-              <ActivityIndicator animating={isLoadingPass} color="#c82f26" className="-ml-6" />
+              <ActivityIndicator
+                animating={isLoadingPass}
+                color={COLORS.primary}
+                className="-ml-6"
+              />
               <Text className="text-center  text-slate-600">Add to Apple Wallet</Text>
               <Image source={require('../assets/images/apple_wallet.png')} className="h-5 w-7" />
             </TouchableOpacity>
@@ -189,27 +187,18 @@ export const BoardingPass = () => {
       <View className="mt-8 flex-1 items-center justify-center rounded-t-3xl bg-white">
         <View className="absolute top-0 flex items-center justify-center ">
           <Svg height="80" width="100" viewBox="0 0 200 200">
-            {/* Drawing the custom shape based on the uploaded image */}
             <Polygon
-              points="0,0 200,0 170,30 30,30"
-              fill="#c82f26"
-              stroke="#c82f26"
+              points={polygonPoints}
+              fill={COLORS.primary}
+              stroke={COLORS.primary}
               strokeWidth="1"
             />
-            <Line x1="30%" y1="0%" x2="55%" y2="0%" stroke="#FFF" strokeWidth="16" />
+            <Line x1="30%" y1="0%" x2="55%" y2="0%" stroke={COLORS.white} strokeWidth="16" />
           </Svg>
         </View>
 
-        <QRCode
-          value={URL}
-          size={160}
-          color="#111"
-          backgroundColor="#fff"
-          // logo={logo}
-          // logoSize={40}
-          // logoBackgroundColor="transparent"
-        />
-        <Text className="mt-6 text-slate-400">Show the QR code at the boarding gate</Text>
+        <QRCode value={URL} size={160} color="#111" backgroundColor={COLORS.white} />
+        <Text className="mt-6 text-sm text-slate-500">Show the QR code at the boarding gate</Text>
         <Toast position="bottom" />
       </View>
     </View>

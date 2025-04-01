@@ -1,0 +1,86 @@
+{
+  "formatVersion" : 1,
+  "relevantDate" : "2025-07-25T14:25-14:25",
+  "logoText": "Skyport Airlines",
+  "backgroundColor": "rgb(11,74,127)",
+  "labelColor": "rgb(17,17,17)",
+  "foregroundColor": "#D3D3D3",
+  "teamIdentifier": "N959JUFQBL",
+  "passTypeIdentifier": "pass.com.helder2pc.boardingpass",
+  "description": "Skyport Boarding Pass",
+  "organizationName": "Skyport Airways",
+  "locations" : [
+    {
+      "longitude" : -122.3748889,
+      "latitude" : 37.6189722
+    }
+  ],
+  "barcodes": [
+    {
+      "format": "PKBarcodeFormatQR",
+      "message": "13fc2d1e-d378-45e6-bb5b-04555e13ac4e",
+      "messageEncoding": "iso-8859-1"
+    },
+    {
+      "format": "PKBarcodeFormatPDF417",
+      "message": "13fc2d1e-d378-45e6-bb5b-04555e13ac4e",
+      "messageEncoding": "iso-8859-1"
+    },
+    {
+      "format": "PKBarcodeFormatAztec",
+      "message": "13fc2d1e-d378-45e6-bb5b-04555e13ac4e",
+      "messageEncoding": "iso-8859-1"
+    },
+    {
+      "format": "PKBarcodeFormatCode128",
+      "message": "13fc2d1e-d378-45e6-bb5b-04555e13ac4e",
+      "messageEncoding": "iso-8859-1"
+    }
+  ],
+  "boardingPass": {
+    "transitType" : "PKTransitTypeAir",
+    "headerFields": [{ "value": "23", "label": "GATE", "key": "gate" }],
+    "auxiliaryFields": [
+      {
+        "key": "boardingTime",
+        "value": "SFO",
+        "label": "2:25 PM",
+        "changeMessage": "Boarding time changed to %@."
+      },
+      {
+        "key": "flightNewName",
+        "value": "815",
+        "label": "FLIGHT",
+        "changeMessage": "Flight number changed to %@"
+      },
+      { "key": "class", "value": "Coach", "label": "DESIG." },
+      { "value": "7/25", "key": "date", "label": "DATE" }
+    ],
+    "primaryFields": [
+      { "key": "depart", "label": "SAN FRANCISCO", "value": "SFO" },
+      {
+        "key": "arrive",
+        "value": "JFK",
+        "label": "NEW YORK",
+        "textAlignment": "PKTextAlignmentRight"
+      }
+    ],
+    "secondaryFields": [
+      { "key": "passenger", "value": "Helder Correia", "label": "PASSENGER" },
+      { "key": "seat", "value": "17A", "label": "SEAT" },
+      { "key": "boarding", "value": "Front Door", "label": "BOARDING" }
+    ],
+    "backFields" : [
+      {
+        "key" : "passport",
+        "label" : "PASSPORT",
+        "value" : "Portugal/Portguese"
+      },
+      {
+        "key" : "residence",
+        "label" : "RESIDENCE",
+        "value" : "999 Infinite Loop, Apartment 42, Cupertino CA"
+      }
+    ]
+  }
+}
