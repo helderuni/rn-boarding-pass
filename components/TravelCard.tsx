@@ -133,32 +133,24 @@ export function TravelCard() {
         <View className="mt-6 flex-1 justify-center">
           <TravelPass />
         </View>
-        {Platform.OS === 'android' ? (
-          <View className="mt-6 items-center">
-            {isLoadingPass ? <ActivityIndicator color={tenant.colors.accent} /> : null}
-            <RNWallet.RNWalletView
-              buttonType={RNWallet.ButtonType.PRIMARY}
-              onPress={handleAddToGoogleWallet}
-            />
-          </View>
-        ) : (
-          <TouchableOpacity
-            className={styles.button}
-            onPress={handleAddToAppleWallet}
-            disabled={isLoadingPass}
-            style={{
-              backgroundColor: tenant.colors.accent,
-              shadowColor: tenant.colors.ink,
-              shadowOffset: { width: 0, height: 8 },
-              shadowOpacity: 0.12,
-              shadowRadius: 16,
-              elevation: 4,
-            }}>
-            {isLoadingPass ? <ActivityIndicator color={tenant.colors.onButton} /> : null}
-            <Text className={styles.buttonText}>Add to Apple Wallet</Text>
-            <Image source={require('../assets/images/apple_wallet.png')} className="h-5 w-7" />
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity
+          className={styles.button}
+          onPress={Platform.OS === 'android' ? handleAddToGoogleWallet : handleAddToAppleWallet}
+          disabled={isLoadingPass}
+          style={{
+            backgroundColor: tenant.colors.accent,
+            shadowColor: tenant.colors.ink,
+            shadowOffset: { width: 0, height: 8 },
+            shadowOpacity: 0.12,
+            shadowRadius: 16,
+            elevation: 4,
+          }}>
+          {isLoadingPass ? <ActivityIndicator color={tenant.colors.onButton} /> : null}
+          <Text className={styles.buttonText}>
+            {Platform.OS === 'android' ? 'Add to Google Wallet' : 'Add to Apple Wallet'}
+          </Text>
+          <Image source={require('../assets/images/apple_wallet.png')} className="h-5 w-7" />
+        </TouchableOpacity>
       </ScrollView>
       <Toast position="bottom" />
     </View>
