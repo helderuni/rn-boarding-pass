@@ -1,0 +1,44 @@
+{
+  "passengerName": "Helder Correia",
+  "cardType": "QR travel card",
+  "status": "Active",
+  "issued": "09/09/2026",
+  "usage": "Show the QR code when you travel. It is personal to the cardholder.",
+  "statusColor": "#326040",
+  "white": "#FFFFFF",
+  "tenants": [
+    {
+      "id": "helderville",
+      "name": "Helderville",
+      "shortName": "Helderville",
+      "reference": "HV-44129018",
+      "organizationName": "Helderville Council",
+      "colors": {
+        "ink": "#2B2420",
+        "accent": "#9A4E31",
+        "accentPressed": "#8C452B",
+        "cream": "#F6F3EE",
+        "sand": "#EFE9E2",
+        "line": "#DFD7CE",
+        "muted": "#988878",
+        "card": "#3E3D3C",
+        "onCard": "#F6F3EE",
+        "logo": "#F6F3EE",
+        "qr": "#2B2420",
+        "qrBackground": "#EFE9E2",
+        "onButton": "#F6F3EE"
+      },
+      "pass": {
+        "backgroundColor": "#2B2420",
+        "foregroundColor": "#F6F3EE",
+        "labelColor": "#EFE9E2"
+      },
+      "walletImages": {
+        "logo.png": "tenant-assets/helderville/logo.png",
+        "logo@2x.png": "tenant-assets/helderville/logo@2x.png",
+        "icon.png": "tenant-assets/helderville/icon.png",
+        "icon@2x.png": "tenant-assets/helderville/icon@2x.png"
+      }
+    }
+  ]
+}

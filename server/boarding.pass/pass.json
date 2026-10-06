@@ -1,14 +1,14 @@
 {
   "formatVersion" : 1,
-  "relevantDate" : "2025-07-25T14:25-14:25",
-  "logoText": "Skyport Airlines",
+  "relevantDate" : "2027-07-25T14:25-14:25",
+  "logoText": "CV Airlines",
   "backgroundColor": "rgb(11,74,127)",
   "labelColor": "rgb(17,17,17)",
   "foregroundColor": "#D3D3D3",
   "teamIdentifier": "N959JUFQBL",
   "passTypeIdentifier": "pass.com.helder2pc.boardingpass",
-  "description": "Skyport Boarding Pass",
-  "organizationName": "Skyport Airways",
+  "description": "Cabo Verde Boarding Pass",
+  "organizationName": "Cabo Verde Airways",
   "locations" : [
     {
       "longitude" : -122.3748889,
@@ -43,8 +43,8 @@
     "auxiliaryFields": [
       {
         "key": "boardingTime",
-        "value": "SFO",
-        "label": "2:25 PM",
+        "value": "LON",
+        "label": "8:25 PM",
         "changeMessage": "Boarding time changed to %@."
       },
       {
@@ -57,11 +57,11 @@
       { "value": "7/25", "key": "date", "label": "DATE" }
     ],
     "primaryFields": [
-      { "key": "depart", "label": "SAN FRANCISCO", "value": "SFO" },
+      { "key": "depart", "label": "LONDON", "value": "LON" },
       {
         "key": "arrive",
-        "value": "JFK",
-        "label": "NEW YORK",
+        "value": "RAI",
+        "label": "PRAIA",
         "textAlignment": "PKTextAlignmentRight"
       }
     ],

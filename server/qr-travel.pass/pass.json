@@ -1,0 +1,91 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.com.helder2pc.boardingpass",
+  "teamIdentifier": "N959JUFQBL",
+  "organizationName": "Helderville Council",
+  "description": "Helderville Council QR travel card",
+  "logoText": "Helderville",
+  "foregroundColor": "rgb(246, 243, 238)",
+  "backgroundColor": "rgb(43, 36, 32)",
+  "labelColor": "rgb(239, 233, 226)",
+  "barcodes": [
+    {
+      "format": "PKBarcodeFormatQR",
+      "message": "HV-44129018",
+      "messageEncoding": "iso-8859-1",
+      "altText": "HV-44129018"
+    }
+  ],
+  "generic": {
+    "headerFields": [
+      {
+        "key": "status",
+        "label": "STATUS",
+        "value": "Active"
+      }
+    ],
+    "primaryFields": [
+      {
+        "key": "passenger",
+        "label": "PASSENGER",
+        "value": "Helder Correia"
+      }
+    ],
+    "secondaryFields": [
+      {
+        "key": "type",
+        "label": "TYPE",
+        "value": "QR travel card"
+      },
+      {
+        "key": "reference",
+        "label": "REFERENCE",
+        "value": "HV-44129018"
+      }
+    ],
+    "auxiliaryFields": [
+      {
+        "key": "organisation",
+        "label": "ORGANISATION",
+        "value": "Helderville Council"
+      },
+      {
+        "key": "issued",
+        "label": "ISSUED",
+        "value": "09/09/2026"
+      }
+    ],
+    "backFields": [
+      {
+        "key": "usage",
+        "label": "HOW TO USE",
+        "value": "Show the QR code when you travel. It is personal to the cardholder."
+      },
+      {
+        "key": "issuer",
+        "label": "ISSUED BY",
+        "value": "Helderville Council"
+      },
+      {
+        "key": "cardType",
+        "label": "CARD",
+        "value": "QR travel card"
+      },
+      {
+        "key": "cardReference",
+        "label": "REFERENCE",
+        "value": "HV-44129018"
+      },
+      {
+        "key": "cardStatus",
+        "label": "STATUS",
+        "value": "Active"
+      },
+      {
+        "key": "issuedOn",
+        "label": "ISSUED",
+        "value": "09/09/2026"
+      }
+    ]
+  }
+}

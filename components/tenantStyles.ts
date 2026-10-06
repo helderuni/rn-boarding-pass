@@ -1,0 +1,21 @@
+export const travelCardStyles = {
+  screen: 'bg-helderville-cream',
+  eyebrow: 'text-xs font-medium uppercase tracking-widest text-helderville-muted',
+  title: 'text-4xl font-semibold text-helderville-ink',
+  card: 'bg-helderville-card',
+  accentBar: 'h-1.5 bg-helderville-accent',
+  label: 'text-xs font-medium uppercase tracking-widest text-helderville-sand',
+  name: 'mt-1 text-3xl font-semibold text-helderville-onCard',
+  cardMuted: 'mt-1 text-sm text-helderville-sand',
+  fieldValue: 'mt-1 text-sm font-semibold text-helderville-onCard',
+  notch: 'h-7 w-7 rounded-full bg-helderville-cream',
+  statusPill: 'flex-row items-center rounded-full bg-helderville-sand px-3 py-1.5',
+  statusDot: 'mr-1.5 h-1.5 w-1.5 rounded-full bg-status-active',
+  statusText: 'text-xs font-semibold text-status-active',
+  qrPanel: 'rounded-3xl bg-helderville-sand p-4',
+  hint: 'mt-4 text-center text-sm text-helderville-sand',
+  reference: 'mt-2 text-center text-base font-semibold tracking-widest text-helderville-onCard',
+  button:
+    'mt-6 flex-row items-center justify-center gap-x-2 rounded-2xl bg-helderville-accent px-4 py-4',
+  buttonText: 'text-base font-semibold text-helderville-onCard',
+};
