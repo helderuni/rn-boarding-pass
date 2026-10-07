@@ -12,7 +12,8 @@ npm-debug.*
 web-build/
 # expo router
 expo-env.d.ts
-server/cert/*
+server/apple/cert/*
+!server/apple/cert/README.md
 
 
 ios

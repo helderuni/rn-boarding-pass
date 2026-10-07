@@ -5,7 +5,7 @@ const { google } = require('googleapis');
 const jwt = require('jsonwebtoken');
 const path = require('path');
 
-const tenantsFile = require('../shared/tenants.json');
+const tenantsFile = require('../../shared/tenants.json');
 
 dotenv.config({
   path: path.resolve(__dirname, '.env'),

@@ -3,8 +3,8 @@ const fastify = require('fastify')({
   logger: true,
 });
 
-const { createGooglePass } = require('./createGooglePass');
-const { createTravelPass } = require('./createTravelPass');
+const { createTravelPass } = require('./apple/createTravelPass');
+const { createGooglePass } = require('./google/createGooglePass');
 
 fastify.get('/', function (request, reply) {
   reply.send({ status: 'ok' });

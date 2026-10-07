@@ -3,7 +3,7 @@ const fs = require('fs');
 const { PKPass } = require('passkit-generator');
 const path = require('path');
 
-const tenantsFile = require('../shared/tenants.json');
+const tenantsFile = require('../../shared/tenants.json');
 
 const certDirectory = path.resolve(__dirname, 'cert');
 const wwdr = fs.readFileSync(path.join(certDirectory, 'wwdr.pem'));
